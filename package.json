@@ -49,7 +49,10 @@
     "@ckeditor/ckeditor5-paragraph": "41.4.2",
     "@ckeditor/ckeditor5-paste-from-office": "41.4.2",
     "@ckeditor/ckeditor5-table": "41.4.2",
-    "@ckeditor/ckeditor5-typing": "41.4.2"
+    "@ckeditor/ckeditor5-typing": "41.4.2",
+    "@ckeditor/ckeditor5-ui": "^41.4.2",
+    "@pikulinpw/ckeditor5-fullscreen": "^1.0.1",
+    "postcss": "^8.4.38"
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-core": "41.4.2",
