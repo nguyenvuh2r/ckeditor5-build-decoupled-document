@@ -65,6 +65,7 @@ export default class FullScreen extends Plugin {
             view.on('execute', () => {
                 const editorElement = editor.ui.view.toolbar.element
                     .closest('.ck_editor_wrapper');
+                alert('here');
                 console.warn(editor.ui.view.toolbar.element);
 
                 if (pikulinpw_ckeditor5_fullscreen.getFullscreenElement(editorElement)) {
