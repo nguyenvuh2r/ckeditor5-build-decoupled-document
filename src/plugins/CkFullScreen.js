@@ -35,14 +35,14 @@ export default class FullScreen extends Plugin {
                     height: 100vh;
                 }
 
-                .ck_fullscreen-mode .toolbar-container {
+                .ck_fullscreen-mode .ck-toolbar {
                     position: fixed;
                     top: 0;
                     width: 100%;
                     z-index: 1000;
                 }
 
-                .ck_fullscreen-mode .editable-container {
+                .ck_fullscreen-mode .ck-editor__editable {
                     top: 0;
                     left: 0;
                     width: 100%;
@@ -63,9 +63,7 @@ export default class FullScreen extends Plugin {
             });
 
             view.on('execute', () => {
-                const editorElement = editor.ui
-                    .getEditableElement()
-                    .parentElement;
+                const editorElement = editor.ui.view.toolbar.element.parentElement;
 
                 if (pikulinpw_ckeditor5_fullscreen.getFullscreenElement(editorElement)) {
                     pikulinpw_ckeditor5_fullscreen.exitFullscreen(editorElement);
