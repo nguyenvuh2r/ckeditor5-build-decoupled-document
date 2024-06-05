@@ -5,15 +5,34 @@ import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 
 const pikulinpw_ckeditor5_fullscreen = {
     'getFullscreenElement': (element) => {
-        return element.classList.contains('ck_fullscreen-mode');
+        return element.classList.contains('ck_fullscreen-mode') ||
+        document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        document.mozFullScreenElement ||
+        document.msFullscreenElement;
     },
     'requestFullscreen': (element) => {
-        if (!element.classList.contains('ck_fullscreen-mode')) {
+        const method = element.requestFullscreen ||
+            element.webkitEnterFullScreen ||
+            element.webkitRequestFullscreen ||
+            element.webkitRequestFullScreen ||
+            element.mozRequestFullScreen ||
+            element.msRequestFullscreen;
+        if (method) {
+            method.call(element);
+        } else {
             element.classList.add('ck_fullscreen-mode');
         }
     },
     'exitFullscreen': (element) => {
-        if (element.classList.contains('ck_fullscreen-mode')) {
+        const method = document.exitFullscreen ||
+            document.webkitExitFullScreen ||
+            document.webkitExitFullscreen ||
+            document.mozCancelFullScreen ||
+            document.msExitFullscreen;
+        if (method) {
+            method.call(document);
+        } else if (element.classList.contains('ck_fullscreen-mode')) {
             element.classList.remove('ck_fullscreen-mode');
         }
     }
@@ -68,14 +87,14 @@ export default class FullScreen extends Plugin {
 
                 if (pikulinpw_ckeditor5_fullscreen.getFullscreenElement(editorElement)) {
                     pikulinpw_ckeditor5_fullscreen.exitFullscreen(editorElement);
-                    //editorElement.classList.remove('ck_fullscreen-mode');
+                    editorElement.classList.remove('ck_fullscreen-mode');
                     view.set({
                         label: 'Full Screen',
                         icon: fullScreenIcon
                     });
                 } else {
                     pikulinpw_ckeditor5_fullscreen.requestFullscreen(editorElement);
-                    //editorElement.classList.add('ck_fullscreen-mode');
+                    editorElement.classList.add('ck_fullscreen-mode');
                     view.set({
                         label: 'Exit Full Screen',
                         icon: exitFullScreenIcon

@@ -15,9 +15,7 @@
 <h1>CKEditor 5 – document editor build – development sample</h1>
 
 <h2>The toolbar</h2>
-<div class="editor-container" id="editor">
-	<div class="toolbar-container"></div>
-	<div class="editable-container"></div>
+<div class="ck_editor_wrapper">
 </div>
 
 <style>
@@ -37,8 +35,8 @@
 		.then( editor => {
 			window.editor = editor;
 
-			document.querySelector( '.toolbar-container' ).appendChild( editor.ui.view.toolbar.element );
-			document.querySelector( '.editable-container' ).appendChild( editor.ui.view.editable.element );
+			document.querySelector( '.ck_editor_wrapper' ).appendChild( editor.ui.view.toolbar.element );
+			document.querySelector( '.ck_editor_wrapper' ).appendChild( editor.ui.view.editable.element );
 		} )
 		.catch( error => {
 			console.error( 'There was a problem initializing the editor.', error );
