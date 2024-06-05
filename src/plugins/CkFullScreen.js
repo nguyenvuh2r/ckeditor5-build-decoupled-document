@@ -63,8 +63,9 @@ export default class FullScreen extends Plugin {
             });
 
             view.on('execute', () => {
-                const editorElement = document.getElementById('editor');
-                //console.log(editor.ui.view);
+                const editorElement = editor.ui
+                    .getEditableElement()
+                    .parentElement;
 
                 if (pikulinpw_ckeditor5_fullscreen.getFullscreenElement(editorElement)) {
                     pikulinpw_ckeditor5_fullscreen.exitFullscreen(editorElement);
